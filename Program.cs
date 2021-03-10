@@ -7,10 +7,11 @@ namespace FolderSearch
     {
         static void Main()
         {
-            var foo = new RegexFilteredFiles(
-                new SortedDirectory(
-                    new StartDirectory(
-                        new DirectoryInfo("../../../input")))).GetFiles();
+            var foo = new DateFilteredFiles(
+                new RegexFilteredFiles(
+                    new SortedDirectory(
+                        new StartDirectory(
+                            new DirectoryInfo("../../../input"))))).GetFiles();
             foreach(var file in foo)
             {
                 Console.WriteLine(file.FullName);
