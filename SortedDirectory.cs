@@ -11,9 +11,9 @@ namespace FolderSearch
         {
             this.source = source;
         }
-        public IEnumerable<FileSystemInfo> EnumerateFileSystemInfos()
+        public IEnumerable<FileSystemInfo> EnumerateFileSystemInfos(DirectoryInfo directory)
         {
-            return source.EnumerateFileSystemInfos().OrderByDescending(f => f.LastWriteTime);
+            return source.EnumerateFileSystemInfos(directory).OrderByDescending(f => f.LastWriteTime);
         }
     }
 }

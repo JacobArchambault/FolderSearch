@@ -12,9 +12,9 @@ namespace FolderSearch
         {
             this.source = source;
         }
-        public IEnumerable<FileSystemInfo> EnumerateFileSystemInfos()
+        public IEnumerable<FileSystemInfo> EnumerateFileSystemInfos(DirectoryInfo directoryInfo)
         {
-            return source.EnumerateFileSystemInfos().Where(file => Regex.IsMatch(file.FullName, ".*.txt") || file is DirectoryInfo);
+            return source.EnumerateFileSystemInfos(directoryInfo).Where(file => Regex.IsMatch(file.FullName, ".*.txt") || file is DirectoryInfo);
         }
     }
 }

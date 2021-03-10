@@ -5,6 +5,6 @@ namespace FolderSearch
 {
     interface IDirectory
     {
-        IEnumerable<FileSystemInfo> EnumerateFileSystemInfos();
+        IEnumerable<FileSystemInfo> EnumerateFileSystemInfos(DirectoryInfo directory);
     }
 }

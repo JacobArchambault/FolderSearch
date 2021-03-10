@@ -6,18 +6,15 @@ namespace FolderSearch
 {
     class StartDirectory : IDirectory
     {
-        private readonly DirectoryInfo directoryInfo;
-        public StartDirectory(DirectoryInfo directoryInfo)
+        public StartDirectory()
         {
-            this.directoryInfo = directoryInfo;
         }
 
-        public IEnumerable<FileSystemInfo> EnumerateFileSystemInfos()
+        public IEnumerable<FileSystemInfo> EnumerateFileSystemInfos(DirectoryInfo directoryInfo)
         {
             try
             {
-                var foo = directoryInfo.EnumerateFileSystemInfos();
-                return foo;
+                return directoryInfo.EnumerateFileSystemInfos();
             }
             catch (DirectoryNotFoundException)
             {
