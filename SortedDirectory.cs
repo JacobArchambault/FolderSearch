@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace FolderSearch
@@ -10,7 +11,7 @@ namespace FolderSearch
         {
             this.source = source;
         }
-        public FileInfo[] EnumerateFiles()
+        public IEnumerable<FileInfo> EnumerateFiles()
         {
             return source.EnumerateFiles().OrderByDescending(f => f.LastWriteTime).ToArray();
         }

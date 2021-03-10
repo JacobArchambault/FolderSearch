@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 
@@ -11,7 +12,7 @@ namespace FolderSearch
         {
             this.source = source;
         }
-        public FileInfo[] EnumerateFiles()
+        public IEnumerable<FileInfo> EnumerateFiles()
         {
             return source.EnumerateFiles().Where(file => Regex.IsMatch(file.FullName, ".*.txt")).ToArray();
         }

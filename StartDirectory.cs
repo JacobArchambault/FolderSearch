@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace FolderSearch
@@ -11,11 +12,11 @@ namespace FolderSearch
             this.directoryInfo = directoryInfo;
         }
 
-        public FileInfo[] EnumerateFiles()
+        public IEnumerable<FileInfo> EnumerateFiles()
         {
             try
             {
-                return directoryInfo.GetFiles("*.*", SearchOption.AllDirectories);
+                return directoryInfo.EnumerateFiles("*.*", SearchOption.AllDirectories);
             }
             catch (DirectoryNotFoundException)
             {

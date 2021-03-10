@@ -15,10 +15,10 @@ namespace FolderSearch
         {
             this.directory = directory;
         }
-        public FileInfo[] EnumerateFiles()
+        public IEnumerable<FileInfo> EnumerateFiles()
         {
             return directory.EnumerateFiles()
-                .Where(file => file.LastWriteTime > DateTime.Today.AddDays(-60))
+                .Where(file => file.LastWriteTime > DateTime.Today.Subtract(TimeSpan.FromDays(60)))
                 .ToArray();
         }
     }
