@@ -12,7 +12,7 @@ namespace FolderSearch
             this.directoryInfo = directoryInfo;
         }
 
-        public IEnumerable<FileSystemInfo> EnumerateFiles()
+        public IEnumerable<FileSystemInfo> EnumerateFileSystemInfos()
         {
             try
             {
