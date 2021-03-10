@@ -4,9 +4,9 @@ namespace FolderSearch
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            var foo = new StartDirectory(new DirectoryInfo("../../../input")).CopyFrom();
+            var foo = new SortedDirectory(new StartDirectory(new DirectoryInfo("../../../input"))).GetFiles();
             Console.WriteLine("Hello World!");
         }
     }

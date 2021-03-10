@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FolderSearch
 {
-    class StartDirectory
+    class StartDirectory : IDirectory
     {
         private readonly DirectoryInfo directoryInfo;
         public StartDirectory(DirectoryInfo directoryInfo)
@@ -15,7 +15,7 @@ namespace FolderSearch
             this.directoryInfo = directoryInfo;
         }
 
-        internal FileInfo[] CopyFrom()
+        public FileInfo[] GetFiles()
         {
             try
             {
