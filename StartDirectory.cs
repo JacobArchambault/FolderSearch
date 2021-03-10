@@ -15,7 +15,7 @@ namespace FolderSearch
         {
             try
             {
-                return directoryInfo.GetFiles();
+                return directoryInfo.GetFiles("*.*", SearchOption.AllDirectories);
             }
             catch (DirectoryNotFoundException)
             {
