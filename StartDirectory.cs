@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FolderSearch
 {
@@ -21,9 +17,8 @@ namespace FolderSearch
             {
                 return directoryInfo.GetFiles();
             }
-            catch(DirectoryNotFoundException ex)
+            catch (DirectoryNotFoundException)
             {
-                Console.WriteLine(ex.Message);
                 throw;
             }
 
