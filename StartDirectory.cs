@@ -15,11 +15,11 @@ namespace FolderSearch
             this.directoryInfo = directoryInfo;
         }
 
-        internal void CopyFrom()
+        internal FileInfo[] CopyFrom()
         {
             try
             {
-                directoryInfo.GetFiles();
+                return directoryInfo.GetFiles();
             }
             catch(DirectoryNotFoundException ex)
             {

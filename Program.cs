@@ -6,7 +6,7 @@ namespace FolderSearch
     {
         static void Main(string[] args)
         {
-            new StartDirectory(new DirectoryInfo("../../../input")).CopyFrom();
+            var foo = new StartDirectory(new DirectoryInfo("../../../input")).CopyFrom();
             Console.WriteLine("Hello World!");
         }
     }
