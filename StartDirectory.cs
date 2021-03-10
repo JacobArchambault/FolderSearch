@@ -12,11 +12,12 @@ namespace FolderSearch
             this.directoryInfo = directoryInfo;
         }
 
-        public IEnumerable<FileInfo> EnumerateFiles()
+        public IEnumerable<FileSystemInfo> EnumerateFiles()
         {
             try
             {
-                return directoryInfo.EnumerateFiles("*.*", SearchOption.AllDirectories);
+                var foo = directoryInfo.EnumerateFileSystemInfos("*", SearchOption.AllDirectories);
+                return foo;
             }
             catch (DirectoryNotFoundException)
             {

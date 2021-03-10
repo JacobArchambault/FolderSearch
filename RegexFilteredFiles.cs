@@ -12,7 +12,7 @@ namespace FolderSearch
         {
             this.source = source;
         }
-        public IEnumerable<FileInfo> EnumerateFiles()
+        public IEnumerable<FileSystemInfo> EnumerateFiles()
         {
             return source.EnumerateFiles().Where(file => Regex.IsMatch(file.FullName, ".*.txt"));
         }
