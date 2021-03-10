@@ -10,9 +10,9 @@ namespace FolderSearch
         {
             this.source = source;
         }
-        public FileInfo[] GetFiles()
+        public FileInfo[] EnumerateFiles()
         {
-            return source.GetFiles().OrderByDescending(f => f.LastWriteTime).ToArray();
+            return source.EnumerateFiles().OrderByDescending(f => f.LastWriteTime).ToArray();
         }
     }
 }

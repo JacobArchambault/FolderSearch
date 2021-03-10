@@ -11,7 +11,7 @@ namespace FolderSearch
             this.directoryInfo = directoryInfo;
         }
 
-        public FileInfo[] GetFiles()
+        public FileInfo[] EnumerateFiles()
         {
             try
             {

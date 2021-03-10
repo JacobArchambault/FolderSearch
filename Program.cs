@@ -11,7 +11,7 @@ namespace FolderSearch
                 new RegexFilteredFiles(
                     new SortedDirectory(
                         new StartDirectory(
-                            new DirectoryInfo("../../../input"))))).GetFiles();
+                            new DirectoryInfo("../../../input"))))).EnumerateFiles();
             foreach(var file in foo)
             {
                 Console.WriteLine(file.FullName);

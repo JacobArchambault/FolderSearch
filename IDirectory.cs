@@ -4,6 +4,6 @@ namespace FolderSearch
 {
     interface IDirectory
     {
-        FileInfo[] GetFiles();
+        FileInfo[] EnumerateFiles();
     }
 }

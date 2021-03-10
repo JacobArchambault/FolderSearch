@@ -15,9 +15,9 @@ namespace FolderSearch
         {
             this.directory = directory;
         }
-        public FileInfo[] GetFiles()
+        public FileInfo[] EnumerateFiles()
         {
-            return directory.GetFiles()
+            return directory.EnumerateFiles()
                 .Where(file => file.LastWriteTime > DateTime.Today.AddDays(-60))
                 .ToArray();
         }
