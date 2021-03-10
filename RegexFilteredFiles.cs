@@ -14,7 +14,7 @@ namespace FolderSearch
         }
         public IEnumerable<FileInfo> EnumerateFiles()
         {
-            return source.EnumerateFiles().Where(file => Regex.IsMatch(file.FullName, ".*.txt")).ToArray();
+            return source.EnumerateFiles().Where(file => Regex.IsMatch(file.FullName, ".*.txt"));
         }
     }
 }

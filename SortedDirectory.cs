@@ -13,7 +13,7 @@ namespace FolderSearch
         }
         public IEnumerable<FileInfo> EnumerateFiles()
         {
-            return source.EnumerateFiles().OrderByDescending(f => f.LastWriteTime).ToArray();
+            return source.EnumerateFiles().OrderByDescending(f => f.LastWriteTime);
         }
     }
 }
