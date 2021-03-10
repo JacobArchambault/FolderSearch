@@ -14,7 +14,7 @@ namespace FolderSearch
         }
         public IEnumerable<FileSystemInfo> EnumerateFileSystemInfos()
         {
-            return source.EnumerateFileSystemInfos().Where(file => Regex.IsMatch(file.FullName, ".*.txt"));
+            return source.EnumerateFileSystemInfos().Where(file => Regex.IsMatch(file.FullName, ".*.txt") || file is DirectoryInfo);
         }
     }
 }

@@ -18,7 +18,7 @@ namespace FolderSearch
         public IEnumerable<FileSystemInfo> EnumerateFileSystemInfos()
         {
             return directory.EnumerateFileSystemInfos()
-                .Where(file => file.LastWriteTime > DateTime.Today.Subtract(TimeSpan.FromDays(60)));
+                .Where(file => file.LastWriteTime > DateTime.Today.Subtract(TimeSpan.FromDays(60)) || file is DirectoryInfo);
         }
     }
 }

@@ -16,7 +16,7 @@ namespace FolderSearch
         {
             try
             {
-                var foo = directoryInfo.EnumerateFileSystemInfos("*", SearchOption.AllDirectories);
+                var foo = directoryInfo.EnumerateFileSystemInfos();
                 return foo;
             }
             catch (DirectoryNotFoundException)
