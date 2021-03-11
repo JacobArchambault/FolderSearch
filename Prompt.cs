@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FolderSearch
 {
@@ -27,13 +22,13 @@ namespace FolderSearch
             return response;
         }
 
-        internal static int NumberResponse(string fromPrompt, string withErrorMessage)
+        internal static int NumberResponse(string fromPrompt)
         {
-            Console.WriteLine(fromPrompt);
+            Console.Write(fromPrompt);
             int response;
             while (!int.TryParse(Console.ReadLine(), out response) || response < 0)
             {
-                Console.WriteLine(withErrorMessage);
+                Console.WriteLine("Please enter a whole number");
             }
             return response;
         }

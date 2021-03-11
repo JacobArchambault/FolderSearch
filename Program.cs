@@ -22,6 +22,7 @@ namespace FolderSearch
         private static void Run()
         {
             new FilesToCopy(
+                new MaxFiles(
                         new SortedDirectory(
                             new DateFilteredFiles(
                                 new RegexFilteredFiles(
@@ -29,8 +30,8 @@ namespace FolderSearch
                                     TextResponse(
                                         "Enter text or a regex string for the file names you'd like to search for, or press enter to skip this step: ")),
                                 NumberResponse(
-                                    "From how many days ago would you like to keep files?",
-                                    "Please enter a whole number"))))
+                                    "From how many days ago would you like to keep files? "))),
+                        NumberResponse("How many files would you like to keep per folder? ")))
                 .CopyFilesRecursively(
                 new DirectoryInfo(
                     TextResponse(
