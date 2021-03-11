@@ -6,14 +6,14 @@ namespace FolderSearch
     {
         static void Main()
         {
-            var foo = new DateFilteredFiles(
-                new RegexFilteredFiles(
-                    new SortedDirectory(
-                        new StartDirectory()))).EnumerateFileSystemInfos(new DirectoryInfo("../../../input"));
-            foreach(var file in foo)
-            {
-                Console.WriteLine(file.FullName);
-            }
+            new FilesToCopy(
+                new DateFilteredFiles(
+                    new RegexFilteredFiles(
+                        new SortedDirectory(
+                            new StartDirectory()))))
+                .CopyFilesRecursively(
+                new DirectoryInfo("../../../input"), 
+                new DirectoryInfo("../../../output"));
         }
     }
 }

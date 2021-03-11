@@ -10,11 +10,11 @@ namespace FolderSearch
         {
         }
 
-        public IEnumerable<FileSystemInfo> EnumerateFileSystemInfos(DirectoryInfo directoryInfo)
+        public IEnumerable<FileInfo> EnumerateFiles(DirectoryInfo directoryInfo)
         {
             try
             {
-                return directoryInfo.EnumerateFileSystemInfos();
+                return directoryInfo.EnumerateFiles();
             }
             catch (DirectoryNotFoundException)
             {
