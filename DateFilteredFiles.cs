@@ -8,15 +8,18 @@ namespace FolderSearch
     class DateFilteredFiles : IDirectory
     {
         private readonly IDirectory directory;
+        private readonly int cutOffDate;
 
-        internal DateFilteredFiles(IDirectory directory)
+        internal DateFilteredFiles(IDirectory directory, int cutOffDate)
         {
             this.directory = directory;
+            this.cutOffDate = cutOffDate;
+
         }
         public IEnumerable<FileInfo> EnumerateFiles(DirectoryInfo directoryInfo)
         {
             return directory.EnumerateFiles(directoryInfo)
-                .Where(file => file.LastWriteTime > DateTime.Today.Subtract(TimeSpan.FromDays(60)));
+                .Where(file => file.LastWriteTime > DateTime.Today.Subtract(TimeSpan.FromDays(cutOffDate)));
         }
     }
 }
