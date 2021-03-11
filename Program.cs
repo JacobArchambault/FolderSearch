@@ -8,11 +8,11 @@ namespace FolderSearch
         {
             Console.WriteLine("Welcome to the file copier app");
             new FilesToCopy(
-                new DateFilteredFiles(
-                    new RegexFilteredFiles(
                         new SortedDirectory(
-                            new StartDirectory()), 
-                        ".*.txt")))
+                            new DateFilteredFiles(
+                                new RegexFilteredFiles(
+                                    new StartDirectory(), 
+                                    ".*.txt"))))
                 .CopyFilesRecursively(
                 new DirectoryInfo(
                     Prompt(
