@@ -12,7 +12,7 @@ namespace FolderSearch
                             new DateFilteredFiles(
                                 new RegexFilteredFiles(
                                     new StartDirectory(), 
-                                    ".*.txt"))))
+                                    Prompt("Enter text or a regex string for the file names you'd like to search for, or press enter to skip this step: ")))))
                 .CopyFilesRecursively(
                 new DirectoryInfo(
                     Prompt(
