@@ -14,23 +14,30 @@ namespace FolderSearch
                             new StartDirectory()))))
                 .CopyFilesRecursively(
                 new DirectoryInfo(
-                    PromptForDirectory(
-                        "Please enter the directory path you want to copy files from:")),
+                    Prompt(
+                        "Please enter the directory path you want to copy files from: ",
+                        "That directory doesn't exist. Please enter another directory path")),
                 new DirectoryInfo(
-                    PromptForDirectory(
-                        "Please enter the directory path you want to copy files to:")));
+                    Prompt(
+                        "Enter the directory path you want to copy files to: ")));
         }
 
-        private static string PromptForDirectory(string promptMessage)
+        private static string Prompt(string promptMessage)
+        {
+            Console.Write(promptMessage);
+            return Console.ReadLine();
+        }
+
+        private static string Prompt(string promptMessage, string invalidInputMessage)
         {
             Console.WriteLine(promptMessage);
-            var startDirectory = Console.ReadLine();
-            while (!Directory.Exists(startDirectory))
+            var response = Console.ReadLine();
+            while (!Directory.Exists(response))
             {
-                Console.WriteLine("That directory doesn't exist. Please enter another directory path");
-                startDirectory = Console.ReadLine();
+                Console.WriteLine(invalidInputMessage);
+                response = Console.ReadLine();
             }
-            return startDirectory;
+            return response;
         }
     }
 }
