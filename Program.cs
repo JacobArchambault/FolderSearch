@@ -11,7 +11,8 @@ namespace FolderSearch
                 new DateFilteredFiles(
                     new RegexFilteredFiles(
                         new SortedDirectory(
-                            new StartDirectory()))))
+                            new StartDirectory()), 
+                        ".*.txt")))
                 .CopyFilesRecursively(
                 new DirectoryInfo(
                     Prompt(

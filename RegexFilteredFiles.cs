@@ -8,13 +8,15 @@ namespace FolderSearch
     class RegexFilteredFiles : IDirectory
     {
         private readonly IDirectory source;
-        internal RegexFilteredFiles(IDirectory source)
+        private readonly string regexFilter;
+        internal RegexFilteredFiles(IDirectory source, string regexFilter)
         {
             this.source = source;
+            this.regexFilter = regexFilter;
         }
         public IEnumerable<FileInfo> EnumerateFiles(DirectoryInfo directoryInfo)
         {
-            return source.EnumerateFiles(directoryInfo).Where(file => Regex.IsMatch(file.FullName, "File"));
+            return source.EnumerateFiles(directoryInfo).Where(file => Regex.IsMatch(file.FullName, regexFilter));
         }
     }
 }
