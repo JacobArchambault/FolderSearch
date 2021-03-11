@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 namespace FolderSearch
 {
     class Program
@@ -12,7 +11,7 @@ namespace FolderSearch
                         new SortedDirectory(
                             new StartDirectory()))))
                 .CopyFilesRecursively(
-                new DirectoryInfo("../../../input"), 
+                new DirectoryInfo("../../../input"),
                 new DirectoryInfo("../../../output"));
         }
     }
