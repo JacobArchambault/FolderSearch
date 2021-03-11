@@ -2,7 +2,7 @@
 using System.IO;
 using System.Linq;
 
-namespace FolderSearch
+namespace FolderSearch.IDirectories
 {
     class SortedDirectory : IDirectory
     {

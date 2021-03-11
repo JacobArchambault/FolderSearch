@@ -1,5 +1,7 @@
-﻿using System.IO;
+﻿using FolderSearch.IDirectories;
 using System;
+using System.IO;
+
 namespace FolderSearch
 {
     class Program
@@ -11,11 +13,11 @@ namespace FolderSearch
                         new SortedDirectory(
                             new DateFilteredFiles(
                                 new RegexFilteredFiles(
-                                    new StartDirectory(), 
+                                    new StartDirectory(),
                                     Response(
-                                        "Enter text or a regex string for the file names you'd like to search for, or press enter to skip this step: ")), 
+                                        "Enter text or a regex string for the file names you'd like to search for, or press enter to skip this step: ")),
                                 NumberResponse(
-                                    "From how many days ago would you like to keep files?", 
+                                    "From how many days ago would you like to keep files?",
                                     "Please enter a whole number"))))
                 .CopyFilesRecursively(
                 new DirectoryInfo(
