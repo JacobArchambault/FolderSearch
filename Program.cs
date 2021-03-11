@@ -14,28 +14,28 @@ namespace FolderSearch
                             new DateFilteredFiles(
                                 new RegexFilteredFiles(
                                     new StartDirectory(),
-                                    Response(
+                                    TextResponse(
                                         "Enter text or a regex string for the file names you'd like to search for, or press enter to skip this step: ")),
                                 NumberResponse(
                                     "From how many days ago would you like to keep files?",
                                     "Please enter a whole number"))))
                 .CopyFilesRecursively(
                 new DirectoryInfo(
-                    Response(
+                    TextResponse(
                         "Please enter the directory path you want to copy files from: ",
                         "That directory doesn't exist. Please enter another directory path")),
                 new DirectoryInfo(
-                    Response(
+                    TextResponse(
                         "Enter the directory path you want to copy files to: ")));
         }
 
-        private static string Response(string toPrompt)
+        private static string TextResponse(string toPrompt)
         {
             Console.Write(toPrompt);
             return Console.ReadLine();
         }
 
-        private static string Response(string toPrompt, string withInvalidInputMessage)
+        private static string TextResponse(string toPrompt, string withInvalidInputMessage)
         {
             Console.WriteLine(toPrompt);
             var response = Console.ReadLine();
