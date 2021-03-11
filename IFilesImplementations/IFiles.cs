@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 
-namespace FolderSearch.IDirectories
+namespace FolderSearch.IFilesImplementations
 {
-    interface IDirectory
+    interface IFiles
     {
         IEnumerable<FileInfo> EnumerateFiles(DirectoryInfo directory);
     }

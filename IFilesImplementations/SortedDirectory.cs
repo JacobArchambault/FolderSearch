@@ -2,12 +2,12 @@
 using System.IO;
 using System.Linq;
 
-namespace FolderSearch.IDirectories
+namespace FolderSearch.IFilesImplementations
 {
-    class SortedDirectory : IDirectory
+    class SortedDirectory : IFiles
     {
-        readonly IDirectory source;
-        internal SortedDirectory(IDirectory source)
+        readonly IFiles source;
+        internal SortedDirectory(IFiles source)
         {
             this.source = source;
         }

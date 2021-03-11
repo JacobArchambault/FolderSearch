@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace FolderSearch.IDirectories
+namespace FolderSearch.IFilesImplementations
 {
-    class DateFilteredFiles : IDirectory
+    class DateFilteredFiles : IFiles
     {
-        private readonly IDirectory directory;
+        private readonly IFiles directory;
         private readonly int cutOffDate;
 
-        internal DateFilteredFiles(IDirectory directory, int cutOffDate)
+        internal DateFilteredFiles(IFiles directory, int cutOffDate)
         {
             this.directory = directory;
             this.cutOffDate = cutOffDate;

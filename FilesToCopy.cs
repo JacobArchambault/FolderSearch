@@ -1,11 +1,11 @@
-﻿using FolderSearch.IDirectories;
+﻿using FolderSearch.IFilesImplementations;
 using System.IO;
 namespace FolderSearch
 {
     class FilesToCopy
     {
-        readonly IDirectory filteredFiles;
-        internal FilesToCopy(IDirectory dir)
+        readonly IFiles filteredFiles;
+        internal FilesToCopy(IFiles dir)
         {
             this.filteredFiles = dir;
         }

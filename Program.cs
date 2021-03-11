@@ -1,4 +1,4 @@
-﻿using FolderSearch.IDirectories;
+﻿using FolderSearch.IFilesImplementations;
 using System;
 using System.IO;
 using static FolderSearch.Prompt;

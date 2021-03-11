@@ -3,13 +3,13 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace FolderSearch.IDirectories
+namespace FolderSearch.IFilesImplementations
 {
-    class RegexFilteredFiles : IDirectory
+    class RegexFilteredFiles : IFiles
     {
-        private readonly IDirectory source;
+        private readonly IFiles source;
         private readonly string regexFilter;
-        internal RegexFilteredFiles(IDirectory source, string regexFilter)
+        internal RegexFilteredFiles(IFiles source, string regexFilter)
         {
             this.source = source;
             this.regexFilter = regexFilter;

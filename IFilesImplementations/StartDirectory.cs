@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 
-namespace FolderSearch.IDirectories
+namespace FolderSearch.IFilesImplementations
 {
-    class StartDirectory : IDirectory
+    class StartDirectory : IFiles
     {
         public StartDirectory()
         {
