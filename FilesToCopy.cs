@@ -4,16 +4,16 @@ namespace FolderSearch
 {
     class FilesToCopy
     {
-        readonly IDirectory dir;
+        readonly IDirectory filteredFiles;
         internal FilesToCopy(IDirectory dir)
         {
-            this.dir = dir;
+            this.filteredFiles = dir;
         }
         public void CopyFilesRecursively(DirectoryInfo source, DirectoryInfo target)
         {
             foreach (DirectoryInfo dir in source.GetDirectories())
                 CopyFilesRecursively(dir, target.CreateSubdirectory(dir.Name));
-            foreach (FileInfo file in dir.EnumerateFiles(source))
+            foreach (FileInfo file in filteredFiles.EnumerateFiles(source))
                 file.CopyTo(Path.Combine(target.FullName, file.Name), true);
         }
     }
