@@ -13,13 +13,17 @@ namespace FolderSearch
                         new SortedDirectory(
                             new StartDirectory()))))
                 .CopyFilesRecursively(
-                new DirectoryInfo(Prompt()),
-                new DirectoryInfo("../../../output"));
+                new DirectoryInfo(
+                    PromptForDirectory(
+                        "Please enter the directory path you want to copy files from:")),
+                new DirectoryInfo(
+                    PromptForDirectory(
+                        "Please enter the directory path you want to copy files to:")));
         }
 
-        private static string Prompt()
+        private static string PromptForDirectory(string promptMessage)
         {
-            Console.WriteLine("Please enter the directory path you want to copy files from");
+            Console.WriteLine(promptMessage);
             var startDirectory = Console.ReadLine();
             while (!Directory.Exists(startDirectory))
             {
