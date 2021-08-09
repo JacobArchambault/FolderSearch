@@ -21,6 +21,7 @@ namespace FolderSearch
 
         private static void Run()
         {
+            Console.WriteLine("Test");
             new FilesToCopy(
                 new MaxFiles(
                         new SortedDirectory(
