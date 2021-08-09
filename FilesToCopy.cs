@@ -4,11 +4,11 @@ namespace FolderSearch
 {
     static class FilesToCopy
     {
-        public static void CopyRecursively(IFiles filteredFiles, DirectoryInfo source, DirectoryInfo target)
+        public static void CopyRecursively(MaxFiles filteredFiles, int maxNumber, DirectoryInfo source, DirectoryInfo target)
         {
             foreach (DirectoryInfo dir in source.EnumerateDirectories())
-                CopyRecursively(filteredFiles, dir, target.CreateSubdirectory(dir.Name));
-            foreach (FileInfo file in filteredFiles.EnumerateFiles(source))
+                CopyRecursively(filteredFiles, maxNumber, dir, target.CreateSubdirectory(dir.Name));
+            foreach (FileInfo file in filteredFiles.EnumerateFiles(source, maxNumber))
                 file.CopyTo(Path.Combine(target.FullName, file.Name), true);
         }
     }

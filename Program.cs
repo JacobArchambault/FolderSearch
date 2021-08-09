@@ -31,8 +31,8 @@ namespace FolderSearch
                                 TextResponse(
                                     "Enter text or a regex string for the file names you'd like to search for, or press enter to skip this step: ")),
                             NumberResponse(
-                                "From how many days ago would you like to keep files? "))),
-                    NumberResponse("How many files would you like to keep per folder? ")),
+                                "From how many days ago would you like to keep files? ")))),
+                NumberResponse("How many files would you like to keep per folder? "),
                 new DirectoryInfo(
                     TextResponse(
                         "Please enter the directory path you want to copy files from: ",

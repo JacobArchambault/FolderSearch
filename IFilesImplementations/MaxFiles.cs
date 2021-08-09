@@ -4,16 +4,14 @@ using System.Linq;
 
 namespace FolderSearch.IFilesImplementations
 {
-    class MaxFiles : IFiles
+    class MaxFiles
     {
         readonly IFiles source;
-        readonly int maxNumber;
-        internal MaxFiles(IFiles source, int maxNumber)
+        internal MaxFiles(IFiles source)
         {
             this.source = source;
-            this.maxNumber = maxNumber;
         }
-        public IEnumerable<FileInfo> EnumerateFiles(DirectoryInfo directory)
+        public IEnumerable<FileInfo> EnumerateFiles(DirectoryInfo directory, int maxNumber)
         {
             return source.EnumerateFiles(directory).Take(maxNumber);
         }
