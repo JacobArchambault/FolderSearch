@@ -5,20 +5,11 @@ using System.Linq;
 
 namespace FolderSearch.IFilesImplementations
 {
-    class DateFilteredFiles : IFiles
+    static class DateFilteredFiles
     {
-        private readonly IFiles directory;
-        private readonly int cutOffDate;
-
-        internal DateFilteredFiles(IFiles directory, int cutOffDate)
+        public static IEnumerable<FileInfo> EnumerateFiles(IEnumerable<FileInfo> source, int cutOffDate)
         {
-            this.directory = directory;
-            this.cutOffDate = cutOffDate;
-
-        }
-        public IEnumerable<FileInfo> EnumerateFiles(DirectoryInfo directoryInfo)
-        {
-            return directory.EnumerateFiles(directoryInfo)
+            return source
                 .Where(file => file.LastWriteTime > DateTime.Today.Subtract(TimeSpan.FromDays(cutOffDate)));
         }
     }
