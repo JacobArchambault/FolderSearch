@@ -4,15 +4,17 @@ namespace FolderSearch
 {
     static class FilesToCopy
     {
-        public static void CopyRecursively(IFiles filteredFiles, int maxNumber, int cutOffDate, DirectoryInfo source, DirectoryInfo target)
+        public static void CopyRecursively(IFiles filteredFiles, string regexFilter, int maxNumber, int cutOffDate, DirectoryInfo source, DirectoryInfo target)
         {
             foreach (DirectoryInfo dir in source.EnumerateDirectories())
-                CopyRecursively(filteredFiles, maxNumber, cutOffDate, dir, target.CreateSubdirectory(dir.Name));
+                CopyRecursively(filteredFiles, regexFilter, maxNumber, cutOffDate, dir, target.CreateSubdirectory(dir.Name));
             foreach (FileInfo file in MaxFiles.EnumerateFiles(
                                         SortedDirectory.EnumerateFiles(
                                             DateFilteredFiles.EnumerateFiles(
-                                                filteredFiles.EnumerateFiles(
-                                                    source), 
+                                                RegexFilteredFiles.EnumerateFiles(
+                                                    filteredFiles.EnumerateFiles(
+                                                        source), 
+                                                    regexFilter), 
                                                 cutOffDate)), 
                                         maxNumber))
             {

@@ -5,18 +5,11 @@ using System.Text.RegularExpressions;
 
 namespace FolderSearch.IFilesImplementations
 {
-    class RegexFilteredFiles : IFiles
+    static class RegexFilteredFiles
     {
-        private readonly IFiles source;
-        private readonly string regexFilter;
-        internal RegexFilteredFiles(IFiles source, string regexFilter)
+        public static IEnumerable<FileInfo> EnumerateFiles(IEnumerable<FileInfo> source, string regexFilter)
         {
-            this.source = source;
-            this.regexFilter = regexFilter;
-        }
-        public IEnumerable<FileInfo> EnumerateFiles(DirectoryInfo directoryInfo)
-        {
-            return source.EnumerateFiles(directoryInfo).Where(file => Regex.IsMatch(file.FullName, regexFilter));
+            return source.Where(file => Regex.IsMatch(file.FullName, regexFilter));
         }
     }
 }
