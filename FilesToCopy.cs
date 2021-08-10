@@ -9,7 +9,7 @@ namespace FolderSearch
         {
             foreach (DirectoryInfo dir in source.EnumerateDirectories())
                 CopyRecursively(filteredFiles, maxNumber, dir, target.CreateSubdirectory(dir.Name));
-            foreach (FileInfo file in EnumerateFiles(filteredFiles, source, maxNumber))
+            foreach (FileInfo file in EnumerateFiles(filteredFiles.EnumerateFiles(source), maxNumber))
                 file.CopyTo(Path.Combine(target.FullName, file.Name), true);
         }
     }
