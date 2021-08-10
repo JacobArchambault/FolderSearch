@@ -1,5 +1,8 @@
 ﻿using FolderSearch.IFilesImplementations;
 using System.IO;
+using System.Linq;
+using System.Text.RegularExpressions;
+
 namespace FolderSearch
 {
     static class FilesToCopy
@@ -11,9 +14,9 @@ namespace FolderSearch
             foreach (FileInfo file in MaxFiles.EnumerateFiles(
                                         SortedDirectory.EnumerateFiles(
                                             DateFilteredFiles.EnumerateFiles(
-                                                RegexFilteredFiles.EnumerateFiles(
-                                                    source.EnumerateFiles(), 
-                                                    regexFilter), 
+                                                source
+                                                    .EnumerateFiles()
+                                                    .Where(file => Regex.IsMatch(file.FullName, regexFilter)), 
                                                 cutOffDate)), 
                                         maxNumber))
             {
