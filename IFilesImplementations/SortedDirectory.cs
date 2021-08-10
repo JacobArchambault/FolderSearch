@@ -4,16 +4,11 @@ using System.Linq;
 
 namespace FolderSearch.IFilesImplementations
 {
-    class SortedDirectory : IFiles
+    static class SortedDirectory
     {
-        readonly IFiles source;
-        internal SortedDirectory(IFiles source)
+        public static IEnumerable<FileInfo> EnumerateFiles(IEnumerable<FileInfo> source)
         {
-            this.source = source;
-        }
-        public IEnumerable<FileInfo> EnumerateFiles(DirectoryInfo directory)
-        {
-            return source.EnumerateFiles(directory).OrderByDescending(f => f.LastWriteTime);
+            return source.OrderByDescending(f => f.LastWriteTime);
         }
     }
 }
