@@ -1,5 +1,4 @@
-﻿using FolderSearch.IFilesImplementations;
-using System;
+﻿using System;
 using System.IO;
 using static FolderSearch.Prompt;
 using static FolderSearch.FilesToCopy;
