@@ -2,6 +2,8 @@
 using System.IO;
 using static FolderSearch.Prompt;
 using static FolderSearch.FilesToCopy;
+using System.Text.RegularExpressions;
+
 namespace FolderSearch
 {
     class Program
@@ -21,9 +23,10 @@ namespace FolderSearch
 
         private static void Run()
         {
+            string pattern = TextResponse(
+                                "Enter text or a regex string for the file names you'd like to search for, or press enter to skip this step: ");
             CopyRecursively(
-                TextResponse(
-                    "Enter text or a regex string for the file names you'd like to search for, or press enter to skip this step: "),
+                file => Regex.IsMatch(file.FullName, pattern),
                 NumberResponse(
                     "From how many days ago would you like to keep files? "),
                 NumberResponse("How many files would you like to keep per folder? "),
