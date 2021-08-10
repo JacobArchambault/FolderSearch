@@ -1,4 +1,5 @@
 ﻿using FolderSearch.IFilesImplementations;
+using System;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -13,11 +14,10 @@ namespace FolderSearch
                 CopyRecursively(regexFilter, maxNumber, cutOffDate, dir, target.CreateSubdirectory(dir.Name));
             foreach (FileInfo file in MaxFiles.EnumerateFiles(
                                         SortedDirectory.EnumerateFiles(
-                                            DateFilteredFiles.EnumerateFiles(
-                                                source
-                                                    .EnumerateFiles()
-                                                    .Where(file => Regex.IsMatch(file.FullName, regexFilter)), 
-                                                cutOffDate)), 
+                                            source
+                                                .EnumerateFiles()
+                                                .Where(file => Regex.IsMatch(file.FullName, regexFilter))
+                                                .Where(file => file.LastWriteTime > DateTime.Today.Subtract(TimeSpan.FromDays(cutOffDate)))), 
                                         maxNumber))
             {
                 file.CopyTo(Path.Combine(target.FullName, file.Name), true);
