@@ -12,13 +12,12 @@ namespace FolderSearch
         {
             foreach (DirectoryInfo dir in source.EnumerateDirectories())
                 CopyRecursively(regexFilter, maxNumber, cutOffDate, dir, target.CreateSubdirectory(dir.Name));
-            foreach (FileInfo file in MaxFiles.EnumerateFiles(
-                                        source
-                                            .EnumerateFiles()
-                                            .Where(file => Regex.IsMatch(file.FullName, regexFilter))
-                                            .Where(file => file.LastWriteTime > DateTime.Today.Subtract(TimeSpan.FromDays(cutOffDate)))
-                                            .OrderByDescending(f => f.LastWriteTime), 
-                                        maxNumber))
+            foreach (FileInfo file in source
+                                        .EnumerateFiles()
+                                        .Where(file => Regex.IsMatch(file.FullName, regexFilter))
+                                        .Where(file => file.LastWriteTime > DateTime.Today.Subtract(TimeSpan.FromDays(cutOffDate)))
+                                        .OrderByDescending(f => f.LastWriteTime)
+                                        .Take(maxNumber))
             {
                 file.CopyTo(Path.Combine(target.FullName, file.Name), true);
             }
