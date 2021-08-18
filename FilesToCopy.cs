@@ -12,15 +12,10 @@ namespace FolderSearch
         {
             foreach (DirectoryInfo dir in source.EnumerateDirectories())
                 CopyRecursively(linqFilter, dir, target.CreateSubdirectory(dir.Name));
-            foreach (FileInfo file in source.EnumerateFiles().FilterFiles(linqFilter))
+            foreach (FileInfo file in source.EnumerateFiles().Filter(linqFilter))
             {
                 file.CopyTo(Path.Combine(target.FullName, file.Name), true);
             }
-        }
-
-        private static IEnumerable<FileInfo> FilterFiles(this IEnumerable<FileInfo> files, Func<IEnumerable<FileInfo>, IEnumerable<FileInfo>> filter)
-        {
-            return filter(files);
         }
     }
 }
