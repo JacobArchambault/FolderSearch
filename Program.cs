@@ -26,10 +26,13 @@ namespace FolderSearch
         {
             string pattern = TextResponse("Enter text or a regex string for the file names you'd like to search for, or press enter to skip this step: ");
             int cutOffDate = NumberResponse("From how many days ago would you like to keep files? ");
+            int maxFiles = NumberResponse("How many files would you like to keep per folder? ");
             CopyRecursively(
-                files => files.Where(file => Regex.IsMatch(file.FullName, pattern) 
-                        && file.LastWriteTime > DateTime.Today.Subtract(TimeSpan.FromDays(cutOffDate))),
-                NumberResponse("How many files would you like to keep per folder? "),
+                files => files
+                            .Where(file => Regex.IsMatch(file.FullName, pattern) 
+                            && file.LastWriteTime > DateTime.Today.Subtract(TimeSpan.FromDays(cutOffDate)))
+                            .OrderByDescending(f => f.LastWriteTime)
+                            .Take(maxFiles),
                 new DirectoryInfo(
                     TextResponse(
                         "Please enter the directory path you want to copy files from: ",
