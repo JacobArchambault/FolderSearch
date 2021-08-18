@@ -8,20 +8,19 @@ namespace FolderSearch
 {
     static class FilesToCopy
     {
-        public static void CopyRecursively(Func<FileInfo, bool> regexFilter, int maxNumber, DirectoryInfo source, DirectoryInfo target)
+        public static void CopyRecursively(Func<IEnumerable<FileInfo>, IEnumerable<FileInfo>> linqFilter, int maxNumber, DirectoryInfo source, DirectoryInfo target)
         {
             foreach (DirectoryInfo dir in source.EnumerateDirectories())
-                CopyRecursively(regexFilter, maxNumber, dir, target.CreateSubdirectory(dir.Name));
-            foreach (FileInfo file in source.EnumerateFiles().FilterFiles(regexFilter, maxNumber, source))
+                CopyRecursively(linqFilter, maxNumber, dir, target.CreateSubdirectory(dir.Name));
+            foreach (FileInfo file in source.EnumerateFiles().FilterFiles(linqFilter, maxNumber, source))
             {
                 file.CopyTo(Path.Combine(target.FullName, file.Name), true);
             }
         }
 
-        private static IEnumerable<FileInfo> FilterFiles(this IEnumerable<FileInfo> files, Func<FileInfo, bool> filter, int maxNumber, DirectoryInfo source)
+        private static IEnumerable<FileInfo> FilterFiles(this IEnumerable<FileInfo> files, Func<IEnumerable<FileInfo>, IEnumerable<FileInfo>> filter, int maxNumber, DirectoryInfo source)
         {
-            return files
-                .Where(filter)
+            return filter(files)
                 .OrderByDescending(f => f.LastWriteTime)
                 .Take(maxNumber);
         }
